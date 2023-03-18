@@ -1,0 +1,16 @@
+/* Global Styles */
+:root {
+  --primary-color: #21262d;
+  --success-color: #28a745;
+  --danger-color: #dc3545;
+  --light-color: #f4f4f4;
+  --dark-color: #333333;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  background-color: #fff;
+  color: #333;
+}
