@@ -11,5 +11,4 @@ All functional react application that follows the Flux pattern utilizing React h
 
 ## Mobile view
 ![Mobile-View-1](https://raw.githubusercontent.com/Barani2396/github-user-finder/main/src/assets/mobile-view-1.png)
-
 ![Mobile-View-2](https://raw.githubusercontent.com/Barani2396/github-user-finder/main/src/assets/mobile-view-2.png)
