@@ -1,0 +1,13 @@
+{
+  "short_name": "GUF",
+  "name": "Github User Finder",
+  "icons": [
+    {
+      "src": "github-120.png",
+      "sizes": "16x16",
+      "type": "image/png"
+    }
+  ],
+  "start_url": "./index.html",
+  "display": "standalone"
+}
