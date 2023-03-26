@@ -1,4 +1,5 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
 const path = require('path');
 
 module.exports = {
@@ -28,11 +29,15 @@ module.exports = {
       { test: /\.(js|jsx)$/, exclude: /node_modules/, use: 'babel-loader' },
       { test: /\.css$/i, use: ['style-loader', 'css-loader'] },
       { test: /\.(png|jpe?g|gif)$/i, use: [{ loader: 'file-loader' }] },
+      { test: /\.(ico)$/, use: [{ loader: 'file-loader' }] },
     ],
   },
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'public', 'index.html'),
+    }),
+    new FaviconsWebpackPlugin({
+      logo: './public/favicon.ico',
     }),
   ],
 };
