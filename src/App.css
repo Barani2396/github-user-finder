@@ -96,3 +96,13 @@ input[type='text']:-webkit-autofill:focus {
 .btn {
   border-color: #30363d;
 }
+
+/* Animation */
+.fadeOut {
+  opacity: 0;
+  transition: width 0.35s 0.35s, height 0.35s 0.35s, opacity 0.35s;
+}
+.fadeIn {
+  opacity: 1;
+  transition: width 0.35s, height 0.35s, opacity 0.35s 0.35s;
+}
