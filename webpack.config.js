@@ -1,6 +1,10 @@
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const FaviconsWebpackPlugin = require('favicons-webpack-plugin');
+const webpack = require('webpack');
+const dotenv = require('dotenv');
 const path = require('path');
+
+const env = dotenv.config({ path: path.join(__dirname, '.env.local') }).parsed;
 
 module.exports = {
   entry: './index.js',
@@ -39,5 +43,6 @@ module.exports = {
     new FaviconsWebpackPlugin({
       logo: './public/favicon.ico',
     }),
+    new webpack.EnvironmentPlugin(env),
   ],
 };

@@ -3,16 +3,20 @@ import AlertContext from '../../context/alert/alertContext';
 
 const Alert = () => {
   const alertContext = useContext(AlertContext);
-  const { alert } = alertContext;
+  const { meta, visible } = alertContext.alert;
 
   return (
-    alert != null && (
-      <div
-        className={`alert alert-${alert.type} d-block w-100 text-center p-1`}
-      >
-        <i className='fas fa-info-circle'></i> {alert.msg}
-      </div>
-    )
+    <div
+      className={`alert alert-${
+        meta != null && meta.type
+      } d-block w-100 text-center p-1 ${visible ? 'fadeIn' : 'fadeOut'}`}
+    >
+      {meta != null && (
+        <>
+          <i className='fas fa-info-circle'></i> {meta.msg}
+        </>
+      )}
+    </div>
   );
 };
 
