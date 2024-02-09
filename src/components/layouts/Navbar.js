@@ -5,19 +5,15 @@ const Navbar = ({ title, icon }) => {
   return (
     <nav className='navbar-custom p-3'>
       <div className='container-fluid d-sm-flex'>
-        <h1 className='fs-2 text-center m-2 m-sm-0'>
+        <Link to='/' className='d-block fs-3 text-center m-2 m-sm-0'>
           <i className={icon}></i> {title}
-        </h1>
+        </Link>
         <ul className='d-flex m-auto me-0 justify-content-center'>
           <li className='mx-2'>
-            <Link to='/' className=''>
-              Home
-            </Link>
+            <Link to='/'>Home</Link>
           </li>
           <li className='mx-2'>
-            <Link to='/About-us' className=''>
-              About us
-            </Link>
+            <Link to='/About'>About</Link>
           </li>
         </ul>
       </div>

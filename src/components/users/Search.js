@@ -1,22 +1,36 @@
-import React, { useContext, useState } from 'react';
-import AlertContext from '../../context/alert/alertContext';
+import React, { useState, useEffect, useContext } from 'react';
+
 import GithubContext from '../../context/github/githubContext';
+import PaginationContext from '../../context/pagination/paginationContext';
+import AlertContext from '../../context/alert/alertContext';
 
 const Search = () => {
   const [text, setText] = useState('');
-  const alertContext = useContext(AlertContext);
   const githubContext = useContext(GithubContext);
+  const paginationContext = useContext(PaginationContext);
+  const alertContext = useContext(AlertContext);
 
+  const { users, searchUsers, clearUsers } = githubContext;
+  const { clearPagination } = paginationContext;
   const { setAlert } = alertContext;
-  const { searchUsers } = githubContext;
+
+  useEffect(() => {
+    if (users != null && users.length === 0) {
+      setAlert('No users found, try again!', 'danger');
+    }
+    // eslint-disable-next-line
+  }, [users]);
 
   const onSubmit = (e) => {
     e.preventDefault();
 
+    clearPagination();
+
     if (text === '') {
       setAlert('Please enter something', 'danger');
+      clearUsers();
     } else {
-      searchUsers(text);
+      searchUsers(text, true);
       setText('');
     }
   };
@@ -26,23 +40,28 @@ const Search = () => {
   };
 
   return (
-    <div className='card mt-5 mb-3'>
-      <form className='p-4 p-sm-5' onSubmit={onSubmit}>
+    <div className='search-container mb-3'>
+      <h1 className='text-center mb-3'>
+        Looking for a particular GitHub user? Type it here.
+      </h1>
+      <form className='search-bar p-4 px-sm-0' onSubmit={onSubmit}>
         <input
-          className='d-block w-100 mb-4'
+          className=''
           type='text'
           name='text'
-          placeholder='Search Users...'
+          placeholder='Search users...'
           value={text}
           onChange={onChange}
           alt='Name'
         />
-        <input
-          className='btn btn-primary w-100'
+        <button
+          className='btn btn-primary'
           type='submit'
-          value='Search'
           alt='Search'
-        />
+          title='Search'
+        >
+          <i className='fas fa-search'></i>
+        </button>
       </form>
     </div>
   );

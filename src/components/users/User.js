@@ -41,11 +41,11 @@ const User = () => {
     return (
       <div className='mt-5'>
         <div className='d-flex justify-content-between mb-3'>
-          <Link to='/' className='btn btn-primary'>
+          <Link to='/' className='btn btn-native'>
             &larr; Back to search
           </Link>
-          <span>
-            Hireable: {''}
+          <span className='d-flex align-items-center'>
+            <label className='me-sm-2 me-1'>Hireable:</label>
             {hireable ? (
               <i className='fas fa-check text-success ms-1 my-auto' />
             ) : (
@@ -76,7 +76,7 @@ const User = () => {
                 href={html_url}
                 target='_blank'
                 rel='noreferrer'
-                className='btn btn-primary mb-3'
+                className='btn btn-native mb-3'
               >
                 Visit profile &rarr;
               </a>

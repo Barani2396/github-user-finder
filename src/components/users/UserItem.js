@@ -11,7 +11,7 @@ const UserItem = ({ user: { login, avatar_url } }) => {
       />
       <h3 className='fs-4'>{login}</h3>
       <div>
-        <Link to={`user/${login}`} className='btn btn-primary w-25 my-3'>
+        <Link to={`user/${login}`} className='btn btn-native p-1 w-25 my-3'>
           More &rarr;
         </Link>
       </div>

@@ -11,13 +11,19 @@ const githubReducer = (state, action) => {
     case SEARCH_USERS:
       return {
         ...state,
-        users: action.payload,
+        queriedUser: action.payload.queriedUser
+          ? action.payload.queriedUser
+          : state.queriedUser,
+        totalUsers: action.payload.total_count,
+        users: action.payload.items,
         loading: false,
       };
 
     case CLEAR_USERS:
       return {
         ...state,
+        queriedUser: '',
+        totalUsers: 0,
         users: null,
         loading: false,
       };

@@ -1,4 +1,4 @@
-import React, { useReducer, userReducer } from 'react';
+import React, { useReducer } from 'react';
 import axios from 'axios';
 import GithubContext from './githubContext';
 import GithubReducer from './githubReducer';
@@ -23,6 +23,8 @@ if (process.env.NODE_ENV != 'production') {
 
 const GithubState = (props) => {
   const initialState = {
+    queriedUser: '',
+    totalUsers: 0,
     users: null,
     user: {},
     repos: [],
@@ -35,15 +37,25 @@ const GithubState = (props) => {
   const setLoading = () => dispatch({ type: SET_LOADING });
 
   // Search users
-  const searchUsers = async (text) => {
+  const searchUsers = async (
+    text,
+    mainSearch = false,
+    perPage = 30,
+    pageNum = 1
+  ) => {
     setLoading();
 
     const res = await axios.get(
-      `https://api.github.com/search/users?q=${text}&client_id=${githubClientID}
+      `https://api.github.com/search/users?q=${text}&per_page=${perPage}&page=${pageNum}&client_id=${githubClientID}
       &client_secret=${githubClientSecret}`
     );
 
-    dispatch({ type: SEARCH_USERS, payload: res.data.items });
+    // Save the query text for pagination calls
+    if (mainSearch) {
+      res.data.queriedUser = text;
+    }
+
+    dispatch({ type: SEARCH_USERS, payload: res.data });
   };
 
   // Clear users
@@ -75,6 +87,8 @@ const GithubState = (props) => {
   return (
     <GithubContext.Provider
       value={{
+        queriedUser: state.queriedUser,
+        totalUsers: state.totalUsers,
         users: state.users,
         user: state.user,
         repos: state.repos,
