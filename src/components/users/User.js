@@ -1,24 +1,18 @@
 import React, { useContext, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-
-import Spinner from '../layouts/Spinner';
-import Repos from '../repos/Repos';
-
 import GithubContext from '../../context/github/githubContext';
+import PaginationContext from '../../context/pagination/paginationContext';
+import Repos from '../repos/Repos';
+import Spinner from '../layouts/Spinner';
+import Favourite from '../misc/Favourite';
 
 const User = () => {
   const githubContext = useContext(GithubContext);
-
-  const { user, loading, getUser, getUserRepos } = githubContext;
-
+  const paginationContext = useContext(PaginationContext);
+  const { user, error, loading, getUser, getUserRepos, clearError } =
+    githubContext;
+  const { clearPagination } = paginationContext;
   const { loginName } = useParams();
-
-  useEffect(() => {
-    getUser(loginName);
-    getUserRepos(loginName);
-    // eslint-disable-next-line
-  }, []);
-
   const {
     name,
     avatar_url,
@@ -35,11 +29,41 @@ const User = () => {
     company,
   } = user;
 
-  if (loading) {
-    return <Spinner />;
+  useEffect(() => {
+    getUser(loginName);
+    getUserRepos(loginName);
+    // eslint-disable-next-line
+  }, []);
+
+  // Clear error
+  const clearErrorState = () => {
+    clearError();
+    clearPagination();
+  };
+
+  if (error != null) {
+    return (
+      <div className='text-center mt-5'>
+        <h1>{error.title}</h1>
+        <p className='fs-2 text-center p-3'>Error: {error.msg}</p>
+        <button
+          className='rounded-circle btn-warning d-flex justify-content-center align-items-center m-auto mb-5'
+          onClick={clearErrorState}
+          title='Clear Error'
+        >
+          <i class='fa-solid fa-rotate-right'></i>
+        </button>
+      </div>
+    );
+  } else if (loading) {
+    return (
+      <div className='spinner'>
+        <Spinner />
+      </div>
+    );
   } else {
     return (
-      <div className='mt-5'>
+      <div className='mt-5' style={{ minHeight: '750px' }}>
         <div className='d-flex justify-content-between mb-3'>
           <Link to='/' className='btn btn-native'>
             &larr; Back to search
@@ -55,6 +79,7 @@ const User = () => {
         </div>
         <div className='card mb-3'>
           <div className='row'>
+            <Favourite user={user} />
             <div className='col-md-6 text-center py-lg-4 py-3'>
               <img
                 src={avatar_url}

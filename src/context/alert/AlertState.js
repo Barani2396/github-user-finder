@@ -8,7 +8,6 @@ const AlertState = (props) => {
     meta: null,
     visible: false,
   };
-
   const [state, dispatch] = useReducer(AlertReducer, initialState);
 
   // Set alert

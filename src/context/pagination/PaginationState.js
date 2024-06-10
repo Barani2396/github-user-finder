@@ -17,15 +17,12 @@ const PaginationState = (props) => {
     maxPageLimit: 0,
     pageList: [],
   };
-
   const [state, dispatch] = useReducer(PaginationReducer, initialState);
 
   // Set total pages
   const setTotalPages = (totalCount, visiblePages = 0) => {
     let totalPages = Math.ceil(totalCount / 30);
     totalPages = totalPages < 30 ? totalPages : 30;
-
-    console.log(totalPages);
 
     // Build page numbers list based on total number of pages
     let pageList = Array.from({ length: totalPages }, (_, i) => i + 1);

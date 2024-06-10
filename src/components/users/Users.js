@@ -1,18 +1,23 @@
 import React, { useContext } from 'react';
-
-import Spinner from '../layouts/Spinner';
-import Pagination from '../../utils/Pagination';
-import UserItem from './UserItem';
-
 import GithubContext from '../../context/github/githubContext';
 import PaginationContext from '../../context/pagination/paginationContext';
+import UserItem from './UserItem';
+import Pagination from '../../utils/Pagination';
+import Spinner from '../layouts/Spinner';
 
 const Users = () => {
   const githubContext = useContext(GithubContext);
   const paginationContext = useContext(PaginationContext);
-
-  const { loading, queriedUser, totalUsers, users, clearUsers, searchUsers } =
-    githubContext;
+  const {
+    loading,
+    error,
+    queriedUser,
+    totalUsers,
+    users,
+    clearUsers,
+    clearError,
+    searchUsers,
+  } = githubContext;
   const { clearPagination } = paginationContext;
 
   // Search users on page click
@@ -26,11 +31,35 @@ const Users = () => {
     clearPagination();
   };
 
-  if (loading) {
-    return <Spinner />;
+  // Clear error
+  const clearErrorState = () => {
+    clearError();
+    clearPagination();
+  };
+
+  if (error != null) {
+    return (
+      <div className='text-center mt-5'>
+        <h1>{error.title}</h1>
+        <p className='fs-2 text-center p-3'>Error: {error.msg}</p>
+        <button
+          className='rounded-circle btn-warning d-flex justify-content-center align-items-center m-auto mb-5'
+          onClick={clearErrorState}
+          title='Clear Error'
+        >
+          <i class='fa-solid fa-rotate-right'></i>
+        </button>
+      </div>
+    );
+  } else if (loading) {
+    return (
+      <div className='spinner'>
+        <Spinner />
+      </div>
+    );
   } else {
     return (
-      <div>
+      <div className='pt-3'>
         {users != null && users.length > 0 && (
           <>
             <button
@@ -56,7 +85,7 @@ const Users = () => {
                   className='col-lg-4 col-md-6 col-12 mt-3 m-auto'
                   key={user.id}
                 >
-                  <UserItem user={user} />
+                  <UserItem user={user} key={user.id} />
                 </div>
               ))}
             </div>

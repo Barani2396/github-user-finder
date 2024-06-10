@@ -1,9 +1,12 @@
 import {
   SEARCH_USERS,
+  SET_FAV_USERS,
   CLEAR_USERS,
   SET_LOADING,
   GET_USER,
   GET_REPOS,
+  APP_ERROR,
+  CLEAR_ERROR,
 } from '../type';
 
 const githubReducer = (state, action) => {
@@ -17,21 +20,33 @@ const githubReducer = (state, action) => {
         totalUsers: action.payload.total_count,
         users: action.payload.items,
         loading: false,
+        error: null,
+      };
+
+    case SET_FAV_USERS:
+      return {
+        ...state,
+        favUsers: action.payload,
+        loading: false,
+        error: null,
       };
 
     case CLEAR_USERS:
+    case CLEAR_ERROR:
       return {
         ...state,
         queriedUser: '',
         totalUsers: 0,
         users: null,
         loading: false,
+        error: null,
       };
 
     case SET_LOADING:
       return {
         ...state,
         loading: true,
+        error: null,
       };
 
     case GET_USER:
@@ -39,6 +54,7 @@ const githubReducer = (state, action) => {
         ...state,
         user: action.payload,
         loading: false,
+        error: null,
       };
 
     case GET_REPOS:
@@ -46,6 +62,13 @@ const githubReducer = (state, action) => {
         ...state,
         repos: action.payload,
         loading: false,
+        error: null,
+      };
+
+    case APP_ERROR:
+      return {
+        ...state,
+        error: action.payload,
       };
 
     default:

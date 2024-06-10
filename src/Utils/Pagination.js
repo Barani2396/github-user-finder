@@ -1,9 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import PaginationContext from '../context/pagination/paginationContext';
+import ScrollContext from '../context/scroll/scrollContext';
 
 const Pagination = (props) => {
   const paginationContext = useContext(PaginationContext);
-
+  const scrollContext = useContext(ScrollContext);
   const {
     currentPage,
     minPageLimit,
@@ -14,11 +15,15 @@ const Pagination = (props) => {
     onPageClick,
     onNextClick,
   } = paginationContext;
-
+  const { usersDivRef, scrollToDiv } = scrollContext;
   const { totalCount, searchUsersOnPageClick, paginationClasses } = props;
 
   useEffect(() => {
     setTotalPages(totalCount, 5);
+
+    if (totalCount > 0) {
+      scrollToDiv(usersDivRef);
+    }
     // eslint-disable-next-line
   }, []);
 
