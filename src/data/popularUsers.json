@@ -1,0 +1,52 @@
+[
+  {
+    "login": "torvalds",
+    "id": 1024025,
+    "avatar_url": "https://avatars.githubusercontent.com/u/1024025?v=4",
+    "html_url": "https://github.com/torvalds",
+    "type": "User",
+    "name": "Linus Torvalds",
+    "public_repos": 7,
+    "followers": 198979
+  },
+  {
+    "login": "mojombo",
+    "id": 1,
+    "avatar_url": "https://avatars.githubusercontent.com/u/1?v=4",
+    "html_url": "https://github.com/mojombo",
+    "type": "User",
+    "name": "Tom Preston-Werner",
+    "public_repos": 66,
+    "followers": 23760
+  },
+  {
+    "login": "apple",
+    "id": 10639145,
+    "avatar_url": "https://avatars.githubusercontent.com/u/10639145?v=4",
+    "html_url": "https://github.com/apple",
+    "type": "Organization",
+    "name": "Apple",
+    "public_repos": 252,
+    "followers": 18264
+  },
+  {
+    "login": "microsoft",
+    "id": 6154722,
+    "avatar_url": "https://avatars.githubusercontent.com/u/6154722?v=4",
+    "html_url": "https://github.com/microsoft",
+    "type": "Organization",
+    "name": "Microsoft",
+    "public_repos": 6050,
+    "followers": 58254
+  },
+  {
+    "login": "google",
+    "id": 1342004,
+    "avatar_url": "https://avatars.githubusercontent.com/u/1342004?v=4",
+    "html_url": "https://github.com/google",
+    "type": "Organization",
+    "name": "Google",
+    "public_repos": 2597,
+    "followers": 35101
+  }
+]
