@@ -30,6 +30,8 @@ This React application allows you to effortlessly search for GitHub users based 
 
 This application utilizes modern JavaScript libraries and frameworks to create a user-friendly and responsive interface. The focus on smooth interactions and easy navigation ensures a pleasant user experience.
 
+## Netlify
+
 [![Netlify Status](https://api.netlify.com/api/v1/badges/11e4026c-249c-423f-b56d-782712d2fc40/deploy-status)](https://github-user-finder-2396.netlify.app/)
 
 ## Desktop view
