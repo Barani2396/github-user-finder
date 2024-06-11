@@ -1,5 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import userSvg from '../assets/user.svg';
+import organizationSvg from '../assets/organization.svg';
+import followersSvg from '../assets/followers.svg';
+import repoSvg from '../assets/repo.svg';
 
 const FeaturedUserItem = ({
   user: { fav, name, login, id, avatar_url, type, followers, public_repos },
@@ -34,11 +38,11 @@ const FeaturedUserItem = ({
               <div className='d-flex align-items-center mt-2 mb-3 my-md-0'>
                 {type == 'User' ? (
                   <div className='user-svg'>
-                    <img src='/assets/user.svg' alt='User' />
+                    <img src={userSvg} alt='User' />
                   </div>
                 ) : (
                   <div className='organization-svg'>
-                    <img src='/assets/organization.svg' alt='Organization' />
+                    <img src={organizationSvg} alt='Organization' />
                   </div>
                 )}{' '}
                 <span>{type}</span>
@@ -51,18 +55,18 @@ const FeaturedUserItem = ({
                 <div className='d-flex align-items-center'>
                   {type == 'User' ? (
                     <div className='user-svg'>
-                      <img src='/assets/user.svg' alt='User' />
+                      <img src={userSvg} alt='User' />
                     </div>
                   ) : (
                     <div className='organization-svg'>
-                      <img src='/assets/organization.svg' alt='Organization' />
+                      <img src={organizationSvg} alt='Organization' />
                     </div>
                   )}{' '}
                   <span>{type}</span>
                 </div>
                 <div className='d-flex align-items-center'>
                   <div className='followers-svg'>
-                    <img src='/assets/followers.svg' alt='Followers' />
+                    <img src={followersSvg} alt='Followers' />
                   </div>
                   <span>
                     {followers}{' '}
@@ -73,7 +77,7 @@ const FeaturedUserItem = ({
                 </div>
                 <div className='d-flex align-items-center'>
                   <div className='repo-svg'>
-                    <img src='/assets/repo.svg' alt='Repository' />
+                    <img src={repoSvg} alt='Repository' />
                   </div>
                   <span>
                     {public_repos}{' '}

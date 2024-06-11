@@ -72,6 +72,20 @@ module.exports = {
 
       // Rule for ICO files
       { test: /\.(ico)$/, use: [{ loader: 'file-loader' }] },
+
+      // Rule for SVG files as image files
+      {
+        test: /\.svg$/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[hash].[ext]',
+              outputPath: 'assets/',
+            },
+          },
+        ],
+      },
     ],
   },
 
