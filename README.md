@@ -4,12 +4,12 @@ A powerful tool to search and manage GitHub users.
 
 ## Insight
 
-This React application allows you to effortlessly search for GitHub users based on their username and pin your favorite profiles for easy access.Click [here](https://github-user-finder-2396.netlify.app/) to check the live app, which is hoisted in Netlify.
+This React application allows you to effortlessly search for GitHub users based on their usernames and pin your favourite profiles for easy access. Click [here](https://github-user-finder-2396.netlify.app/) to check the live app hoisted in Netlify.
 
 ## Key Features
 
-- **Search Users:** Find GitHub users by simply entering their username.
-- **Pin Users:** Save your favorite users for later reference using the browser's local storage.
+- **Search Users:** Find GitHub users by entering their username.
+- **Pin Users:** Save your favourite users for later reference using the browser's local storage.
 - **Smooth Scrolling:** Enjoy a seamless user experience with smooth scrolling animations.
 
 ## Technologies Used
@@ -18,7 +18,7 @@ This React application allows you to effortlessly search for GitHub users based 
 - **React Router DOM:** Handles navigation within the application.
 - **Context API:** Manages the global state across the app.
 - **Axios:** Makes HTTP requests to the GitHub API to fetch user data.
-- **Local Storage:** Stores the pinned users information for future use.
+- **Local Storage:** Stores the pinned user information for future use.
 - **CSS with scrollIntoView:** Provides custom styling and smooth scrolling animations.
 - **Bootstrap:** Offers responsive design and pre-styled components.
 
